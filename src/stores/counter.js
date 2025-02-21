@@ -4,27 +4,25 @@ import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
 export const useDetailStore = defineStore('detailStore', () => {
-  const price = ref([])
+  const allProduct = ref([])
   const count=ref(0)
   async function getname() {
     try {
-      console.log(count.value);
-      
-      axios.get(`https://demo.spreecommerce.org/api/v2/storefront/products?page=${count.value}`
+    console.log(count.value);
+    await axios.get(`https://demo.spreecommerce.org/api/v2/storefront/products?page=${count.value}&per_page=20`
       ).then(res=>{
-        price.value=res.data.data
+        allProduct.value=res.data.data
       })
- 
     } catch (error) {
       console.error('Error fetching data:', error)
     }
   }
-  
+  getname()
   watch(count,()=>{
     getname()
   })
   return {
-    price,
+    allProduct,
     count,
     getname,
   }

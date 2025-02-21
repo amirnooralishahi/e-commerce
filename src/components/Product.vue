@@ -96,7 +96,7 @@
       <div class="cardItems d-flex justify-content-end row">
         <div
           class="cardItem border rounded-4 col-3"
-          v-for="(item, index) in usebook.price" :key="index">
+          v-for="(item, index) in usebook.allProduct" :key="index">
           <cardItem :priceProduct='priceProduct' :nameProduct="nameProduct" :index="index"/>
         </div>
       </div>
@@ -450,10 +450,10 @@ onMounted(()=>{
   
     
 
- watch(()=>usebook.price,()=>{
+ watch(()=>usebook.allProduct,()=>{
   for(var i =0 ; i<20 ; i++){   
-    nameProduct.value.push(usebook.price[i]['attributes']['name'])
-    priceProduct.value.push(usebook.price[i]['attributes']['price'])
+    nameProduct.value.push(usebook.allProduct[i]['attributes']['name'])
+    priceProduct.value.push(usebook.allProduct[i]['attributes']['price'])
   }
  })
 })
