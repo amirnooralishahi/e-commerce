@@ -14,7 +14,7 @@ export const useDetailStore = defineStore('detailStore', () => {
         allProduct.value=res.data.data
       })
     } catch (error) {
-      console.error('Error fetching data:', error)
+      console.error('error:', error)
     }
   }
   getname()

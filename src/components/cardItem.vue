@@ -11,7 +11,7 @@
       <div class="d-flex justify-content-between w-100 border">
         <i class="bi bi-heart heart"></i>
         <h3 class="fs-5 overflow-hidden text-start">
-          {{ props.nameProduct[index]}}
+          {{ props.item['attributes']['name']}}
         </h3>
       </div>
 
@@ -19,18 +19,17 @@
     </div>
   </div>
   <div class="price d-flex gap-2 p-3">
-    <span class="fw-bold">{{ props.priceProduct [index] }}</span>
+    <span class="fw-bold">{{ props.item['attributes']['price'] }}</span>
   </div>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  nameProduct: Array, 
-  priceProduct : Array, 
-  index:Number
-  
+  index:Number,
+  item:Object
 })
+
 import { useDetailStore } from "../stores/counter.js";
 import { onMounted, ref, watch, watchEffect } from "vue";
 onMounted(() => {
@@ -40,6 +39,8 @@ onMounted(() => {
   usebook.getname()
 
 })
+
+
 
 
 const usebook = useDetailStore();

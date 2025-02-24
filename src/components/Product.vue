@@ -97,7 +97,8 @@
         <div
           class="cardItem border rounded-4 col-3"
           v-for="(item, index) in usebook.allProduct" :key="index">
-          <cardItem :priceProduct='priceProduct' :nameProduct="nameProduct" :index="index"/>
+          <cardItem   :item="item" :index="index" />
+          
         </div>
       </div>
     </div>
@@ -445,17 +446,6 @@ let nameProduct = ref([])
 const usebook = useDetailStore();
 onMounted(()=>{
  usebook.getname()
-
-  
-  
-    
-
- watch(()=>usebook.allProduct,()=>{
-  for(var i =0 ; i<20 ; i++){   
-    nameProduct.value.push(usebook.allProduct[i]['attributes']['name'])
-    priceProduct.value.push(usebook.allProduct[i]['attributes']['price'])
-  }
- })
 })
 function decrease(){
     if( usebook.count>0){
