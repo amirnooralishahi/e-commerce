@@ -1,0 +1,283 @@
+*,
+*::after,
+*::before {
+
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  
+}
+
+
+@font-face {
+  font-family: "yekan";
+  src: url(font/B_Yekan/Yekan.ttf);
+}
+
+body {
+
+  font-family: "yekan" !important;
+}
+
+.header {
+  width: 100%;
+
+  &-contain {
+    .search {
+      width: 600px;
+
+      .stick {
+        color: #A72F3B;
+      }
+    }
+    .left{ 
+      &-shop{ 
+       &:hover{ 
+        cursor: pointer !important;
+       }
+       .cart {
+        z-index: 20; /* افزایش مقدار z-index */
+        position: relative;
+        border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 17px;
+    
+        .circle { 
+          
+          position: absolute;
+          background-color: rgba(139, 0, 0, 0.293);
+          right: -5px;
+          z-index: 30;
+        width: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 16px;
+              top: -5px;
+              border-radius: 50%;
+        }
+      }
+   
+    
+    
+    
+    
+    
+      }
+    }
+  }
+}
+
+.category {
+    // margin-top: 7rem;
+  color: #434343 !important;
+  &-head {
+    font-size: 1.1rem;
+    gap: 4rem;
+
+  }
+}
+.steps{ 
+
+    .color{ 
+        color: rgba(128, 43, 43, 0.278);
+    }
+    .basket{ 
+        color: darkred;
+    }
+}
+
+.invoice{
+    z-index: 100 !important;
+    &-container{
+ 
+        .right{
+            .product { 
+                width: 70%;
+            }
+            .allpay{ 
+                width: 30%;
+                &-container{
+                    .up{ 
+                        .sub{
+                            .submit  { 
+                                border: 1px solid darkred;
+                                color: darkred;
+                                padding: 0 2.5rem;
+                            }
+                            .text{
+                                border: 1px solid rgba(128, 128, 128, 0.459) !important;
+                                padding: 0 4.5rem !important; 
+                            }
+                        }
+                     
+                    }
+                    .center{ 
+                        .discount{ 
+                            .all{ 
+                                .text{
+                                    .number { 
+                            font-weight: 400 !important;
+            
+                                        font-size: 12px;                        }
+                                }
+                            }
+                        }
+                    }
+                    .subProduct{
+        
+                        .order{
+                            border: transparent !important;
+                            background-color: darkred;
+                        }
+                    }
+                    .line{ 
+                        height: 1px;
+                        background-color: rgba(128, 128, 128, 0.459);
+                    }
+                }
+            }
+            .danger  { 
+              &-container{ 
+                .icon{ 
+                  color: #F4B740;
+                }
+              }
+            }
+        }
+        .left{ 
+            .line{
+                height: 1px; 
+                background-color: rgba(128, 128, 128, 0.459);
+            }
+            .right{ 
+       
+              .image{ 
+                .img{ 
+                  width: 150px;
+                  height: 150px;
+  
+                }
+              }
+            }
+            .buy{
+              .left{ 
+               .min,.max {
+                &:hover{ 
+                  cursor: pointer;
+                }
+                }
+              }
+            }
+            
+        }
+       
+    }
+    
+}
+
+
+.footer_up {
+    background-color: #641C23;
+  
+  
+    &-contain {
+      .right {
+        .text {
+          font-size: 13px;
+        }
+  
+        .button {
+          background-color: #ae2432;
+          height: 40px;
+          width: 80px;
+        }
+  
+  
+  
+        .email {
+  
+          width: 430px;
+          background-color: #641C23;
+        }
+      }
+  
+      .left {
+        margin-right: 250px;
+  
+        .icon {
+          color: white;
+        }
+      }
+    }
+  }
+  
+  .footer_down {
+    // height: 300px;
+    background-color: #ae2432;
+  
+    &-contain {
+  
+  
+      .text {
+        color: rgb(222, 220, 220);
+      }
+  
+      .with,
+      .several,
+      .guid {
+        color: white;
+  
+        .buy {
+  
+          position: relative;
+  
+          &::after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+          }
+        }
+  
+        .line {
+          height: 1px;
+  
+          background-color: white;
+        }
+  
+      }
+  
+      .shop {
+        &-contain {
+          border: 1px solid red !important;
+          gap: 60px;
+  
+          .title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 21px;
+            border: 1px solid blue !important;
+          }
+  
+          .info {
+            color: rgb(201, 201, 201) !important;
+            font-size: 12px;
+          }
+  
+          .image {}
+        }
+  
+  
+      }
+    }
+  
+  }

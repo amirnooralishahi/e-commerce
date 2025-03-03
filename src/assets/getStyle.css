@@ -58,83 +58,60 @@ body {
   color: #434343 !important;
 }
 .category-head {
-  margin-left: 4rem;
   font-size: 1.1rem;
-  gap: 4.5rem;
+  gap: 4rem;
 }
 
-.Card .filter {
-  width: 300px;
-  height: 470px !important;
+.steps .color {
+  color: rgba(128, 43, 43, 0.278);
 }
-.Card .filter-contain {
-  gap: 1rem;
-}
-.Card .filter-contain .title .delete {
-  color: #A72F3B !important;
-  font-size: 12px;
-}
-.Card .filter-contain .line {
-  width: 100%;
-  height: 1px;
-  background: rgb(209, 209, 209);
-}
-.Card-contain .filter-item {
-  color: #242424 !important;
-  font-size: 16.5px !important;
-  font-weight: normal;
-}
-.Card-contain .filter-item .line .full {
-  color: #A72F3B;
-}
-.Card-contain .filter-item .line-down {
-  height: 2px;
-  background-color: #A72F3B;
-  width: 100%;
-}
-.Card-contain .filter-item .item {
-  gap: 1.9rem !important;
-  margin-right: 4.5rem;
-}
-.Card-contain .cardItems {
-  margin-top: 11rem;
-  gap: 30px;
-  margin-right: 1.5rem;
-}
-.Card-contain .cardItems .cardItem {
-  width: 300px !important;
-}
-.Card-contain .cardItems .cardItem .heart {
-  font-size: 20px;
-}
-
-.navigation {
-  margin-left: 40px;
-}
-.navigation .next,
-.navigation .per {
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid darkred;
-}
-.navigation .next .left,
-.navigation .next .right,
-.navigation .per .left,
-.navigation .per .right {
+.steps .basket {
   color: darkred;
 }
-.navigation .next .left:hover,
-.navigation .next .right:hover,
-.navigation .per .left:hover,
-.navigation .per .right:hover {
+
+.invoice {
+  z-index: 100 !important;
+}
+.invoice-container .right .product {
+  width: 70%;
+}
+.invoice-container .right .allpay {
+  width: 30%;
+}
+.invoice-container .right .allpay-container .up .sub .submit {
+  border: 1px solid darkred;
+  color: darkred;
+  padding: 0 2.5rem;
+}
+.invoice-container .right .allpay-container .up .sub .text {
+  border: 1px solid rgba(128, 128, 128, 0.459) !important;
+  padding: 0 4.5rem !important;
+}
+.invoice-container .right .allpay-container .center .discount .all .text .number {
+  font-weight: 400 !important;
+  font-size: 12px;
+}
+.invoice-container .right .allpay-container .subProduct .order {
+  border: transparent !important;
+  background-color: darkred;
+}
+.invoice-container .right .allpay-container .line {
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.459);
+}
+.invoice-container .right .danger-container .icon {
+  color: #F4B740;
+}
+.invoice-container .left .line {
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.459);
+}
+.invoice-container .left .right .image .img {
+  width: 150px;
+  height: 150px;
+}
+.invoice-container .left .buy .left .min:hover, .invoice-container .left .buy .left .max:hover {
   cursor: pointer;
-}
-.navigation-contain {
-  width: 680px;
-}
-.navigation-contain .circle {
-  width: 2rem;
-  height: 2rem;
 }
 
 .footer_up {
@@ -204,4 +181,4 @@ body {
 .footer_down-contain .shop-contain .info {
   color: rgb(201, 201, 201) !important;
   font-size: 12px;
-}/*# sourceMappingURL=product.css.map */
+}/*# sourceMappingURL=getStyle.css.map */

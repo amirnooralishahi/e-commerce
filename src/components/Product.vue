@@ -6,18 +6,11 @@
           class="left-shop d-flex gap-3 align-items-center justify-content-center"
         >
           <span>سبد خرید</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-cart"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
-            />
-          </svg>
+          <div class="cart">
+            <div class="circle">{{ shop }}</div>
+            <i class="bi bi-cart2"></i>
+          </div>
+          
         </div>
         <div
           class="left-account d-flex gap-2 align-items-center justify-content-center"
@@ -37,9 +30,9 @@
           </svg>
         </div>
       </div>
-      <div class="center">
+      <div class="center ">
         <div class="search d-flex border rounded-4 align-items-center">
-          <div class="search-icon p-2">
+          <div class="search-icon  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"
@@ -97,7 +90,7 @@
         <div
           class="cardItem border rounded-4 col-3"
           v-for="(item, index) in usebook.allProduct" :key="index">
-          <cardItem   :item="item" :index="index" />
+          <cardItem   :item="item" :index="index" :image="useimage.images" v-model:shop="shop" />
           
         </div>
       </div>
@@ -440,13 +433,20 @@
 import { onMounted,ref, watch } from 'vue';
 import cardItem from './cardItem.vue';
 import { useDetailStore } from '../stores/counter.js';
+import { useImageStore } from '@/stores/image';
 
-let priceProduct = ref([])
-let nameProduct = ref([])
+const useimage = useImageStore()
 const usebook = useDetailStore();
+
+
+
 onMounted(()=>{
  usebook.getname()
+ useimage.getImages()
 })
+const shop = ref(0)
+console.log(shop.value);
+
 function decrease(){
     if( usebook.count>0){
       usebook.count-=1 
@@ -471,5 +471,7 @@ function decrease(){
 
 <style scoped>
 @import "../assets/product.css";
+
+
 </style>
 

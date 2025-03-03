@@ -1,6 +1,6 @@
 import { createRouter,createWebHistory }    from 'vue-router'
 import HelloWorld from '../components/Product.vue'
-import cardItem from '../components/cardItem.vue'
+import cardItem from '../components/BasketProduct.vue'
 
 const routes= [
     {path:'/' , component: HelloWorld},

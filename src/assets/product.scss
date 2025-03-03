@@ -6,7 +6,7 @@
   padding: 0;
   margin: 0;
   box-shadow: none;
-  overflow-x: hidden;
+  
 }
 
 
@@ -29,6 +29,46 @@ body {
 
       .stick {
         color: #A72F3B;
+      }
+    }
+    .left{ 
+      &-shop{ 
+       &:hover{ 
+        cursor: pointer !important;
+       }
+       .cart {
+        z-index: 20; /* افزایش مقدار z-index */
+        position: relative;
+        border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 17px;
+    
+        .circle { 
+          
+          position: absolute;
+          background-color: rgba(139, 0, 0, 0.293);
+          right: -5px;
+          z-index: 30;
+        width: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 16px;
+              top: -5px;
+              border-radius: 50%;
+        }
+      }
+   
+    
+    
+    
+    
+    
       }
     }
   }
@@ -124,8 +164,7 @@ body {
         .heart {
           font-size: 20px;
         }
-
-        .image {}
+       
       }
     }
 
