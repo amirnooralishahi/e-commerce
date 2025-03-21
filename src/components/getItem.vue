@@ -2,7 +2,7 @@
        
        <div class="line mt-2 "></div>
 
-    <div v-for="(item, index) in image" :key="index" class="d-flex flex-column gap-3">
+    <div v-for="(item, index) in storages" :key="index" class="d-flex flex-column gap-3">
       <div class="buy d-flex w-100  align-items-center">
         <div class="left w-25 p-2">
           <div class="d-flex gap-3 align-items-center">
@@ -14,18 +14,18 @@
   
         <div class="right d-flex align-items-center justify-content-end gap-4 p-2 w-75">
           <div class="price">
-            {{ prices[index] }} <span>تومان</span>
+            {{ storages[index].price }} <span>تومان</span>
           </div>
   
           <div class="name">
-            {{ names[index] }}
+            {{ storages[index].names }}
           </div>
   
-          <div class="image d-flex" v-if="image[index]">
-            <img :src="image[index]" alt="" class="img rounded-2">
+          <div class="image d-flex" v-if="storages[index].images">
+            <img :src="storages[index].images" alt="" class="img rounded-2">
           </div>
   
-          <div class="icon">
+          <div class="icon" @click="removeItem(index),removeNum(index)">
             <i class="bi bi-x-square"></i>
           </div>
         </div>
@@ -35,45 +35,43 @@
   </template>
   
   <script setup>
-  import { onMounted, onUnmounted, ref, watchEffect } from "vue";
-  const emit = defineEmits(['prices','number'])
-  const image = ref([]);
-  const names = ref([]);
-  const prices = ref([]);
-  const number = ref([]);
-  
-  function sendData(){
-    emit('prices',prices.value)
-    emit('number',number.value)
- 
+  import {  onMounted, onUnmounted, ref, watchEffect } from "vue";
 
-  }
+  const emit = defineEmits(['prices','number'])
+  const storages = ref([]);
+  const number = ref([])
+  
+
   function getStorage() {
     console.log("Fetching localStorage...");
-  
-    const imagesData = localStorage.getItem("images");
-    const namesData = localStorage.getItem("names");
-    const pricesData = localStorage.getItem("prices");
+    const storageData =localStorage.getItem("items");
 
-  watchEffect(()=>{
-    sendData()
-  })
-    image.value = imagesData ? JSON.parse(imagesData) : [];
-    names.value = namesData ? JSON.parse(namesData) : [];
-    prices.value = pricesData ? JSON.parse(pricesData) : [];
-    if (image.value.length !== names.value.length || image.value.length !== prices.value.length) {
-      console.error("Error: Data mismatch in localStorage!");
-    }
-  
-    number.value = Array(image.value.length).fill(1);
+    const value = storages.value = storageData ? JSON.parse(storageData) : [];
+    console.log(value[1]);
+    
+    number.value = Array(value.length).fill(1);
+    function sendData(){
+      
+    emit('prices',storages.value.map(item => item.price)) 
+    emit('number',number.value)
   }
+
+  
+  
+  watchEffect(()=>{
+
+
+    sendData()
+  },{deep:true})
+  return value
+   }
+  
   
   onMounted(() => {
+
     getStorage();
     decrease()
     increase()
-
-    
     window.addEventListener("storage", getStorage);
   });
   
@@ -90,8 +88,19 @@
   }
   
   function increase(index) {
-
     number.value[index] += 1;
+  }
+  function removeNum(index){
+    number.value.splice(index, 1);
+  }
+  function removeItem(index){ 
+    console.log(storages.value);
+    console.log(storages);
+    storages.value.splice(index, 1);
+    storages.value = [...storages.value];
+
+    localStorage.setItem('items',JSON.stringify(storages.value))
+ 
   }
   </script>
   

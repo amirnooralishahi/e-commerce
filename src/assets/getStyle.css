@@ -31,7 +31,6 @@ body {
 .header-contain .left-shop .cart {
   z-index: 20; /* افزایش مقدار z-index */
   position: relative;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,6 +110,9 @@ body {
   height: 150px;
 }
 .invoice-container .left .buy .left .min:hover, .invoice-container .left .buy .left .max:hover {
+  cursor: pointer;
+}
+.invoice-container .left .buy .right .icon {
   cursor: pointer;
 }
 

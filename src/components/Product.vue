@@ -2,6 +2,7 @@
   <div class="header mt-3">
     <div class="header-contain p-3 d-flex w-100 justify-content-around">
       <div class="left d-flex gap-3">
+        <router-link to="/BasketProduct" class="link">
         <div
           class="left-shop d-flex gap-3 align-items-center justify-content-center"
         >
@@ -12,6 +13,7 @@
           </div>
           
         </div>
+      </router-link>
         <div
           class="left-account d-flex gap-2 align-items-center justify-content-center"
         >
@@ -167,11 +169,11 @@
           </div>
           <div class="line"></div>
         </div>
-        <div class="delivary d-flex flex-column align-items-center w-100">
-          <div class="up w-100">
-            <div class="icon-check d-flex w-100 justify-content-between">
+        <div class="delivary  w-100   ">
+
+            <div class="icon-check  w-100  ">
               <div
-                class="form-check w-100 form-switch d-flex justify-content-between"
+                class="form-check w-100 form-switch  d-flex justify-content-between"
               >
                 <input
                   class="form-check-input"
@@ -186,11 +188,11 @@
                 >
               </div>
             </div>
-          </div>
+          
           <div class="line"></div>
         </div>
-        <div class="available d-flex flex-column align-items-center w-100">
-          <div class="up d-flex w-100 justify-content-center">
+        <div class="available w-100 ">
+        
             <div class="icon-check d-flex w-100">
               <div
                 class="form-check form-switch w-100 d-flex justify-content-between"
@@ -208,12 +210,12 @@
                 >
               </div>
             </div>
-          </div>
+    
           <div class="line"></div>
         </div>
 
-        <div class="graphic d-flex flex-column align-items-center w-100">
-          <div class="up d-flex w-100 justify-content-center">
+        <div class="graphic  w-100 ">
+         
             <div class="icon-check d-flex w-100">
               <div
                 class="form-check form-switch w-100 d-flex justify-content-between"
@@ -231,7 +233,7 @@
                 >
               </div>
             </div>
-          </div>
+     
           <div class="line"></div>
         </div>
         <div class="price d-flex flex-column align-items-center w-100">

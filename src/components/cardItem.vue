@@ -9,7 +9,7 @@
     <div
       class="text d-flex flex-column gap-1 name w-100 align-items-end"
     >
-      <div class="d-flex justify-content-between w-100 border">
+      <div class="d-flex justify-content-between w-100 ">
         <i class="bi bi-heart heart"></i>
         <h3 class="fs-5 overflow-hidden text-start" ref="localName">
           {{ props.item['attributes']['name']}}
@@ -40,7 +40,7 @@
 import { useDetailStore } from "../stores/counter.js";
 // import { computed } from "vue";
 
-import { onMounted, ref, toRaw, useTemplateRef, watch, watchEffect } from "vue";
+import { onMounted, ref, watch } from "vue";
 const emit = defineEmits(["update:shop"]);
 const props = defineProps({
   index:Number,
@@ -51,19 +51,16 @@ const props = defineProps({
 })
 
 function increase() {
-  let names = JSON.parse(localStorage.getItem("names")) || [];
-  let prices = JSON.parse(localStorage.getItem("prices")) || [];
-  let images = JSON.parse(localStorage.getItem("images")) || [];
+  
+  let items = JSON.parse(localStorage.getItem("items")) || [];
 
-  names.push(props.item.attributes.name);
-  prices.push(props.item.attributes.price);
-  images.push(imageUrl.value);
-
-  localStorage.setItem("names", JSON.stringify(names));
-  localStorage.setItem("prices", JSON.stringify(prices));
-  localStorage.setItem("images", JSON.stringify(images));
-
-
+  let objectLocal = {
+    names: props.item.attributes.name,
+    price: props.item.attributes.price,
+    images: imageUrl.value
+  };
+  items.push(objectLocal);
+  localStorage.setItem("items", JSON.stringify(items));
 }
 
 const imageUrl = ref("");

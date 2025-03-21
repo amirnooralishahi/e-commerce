@@ -127,10 +127,10 @@
         <div class="text">سبد خرید </div>
         
     </div>
-</div>
-<div class="invoice my-2 ">
-  <div class="invoice-container  d-flex justify-content-center p-5   row ">
-    <div class="right col-4 d-flex flex-column gap-4">
+ </div>
+  <div class="invoice my-2 ">
+    <div class="invoice-container  d-flex justify-content-center p-5   row ">
+      <div class="right col-4 d-flex flex-column gap-4">
         
         <div class="allpay d-flex ">
             <div class="allpay-container d-flex flex-column border  rounded-5 p-4">
@@ -155,7 +155,7 @@
                    <div class="pay d-flex flex-column ">
                 
                      <span v-for="(item, index) in prices" :key="index">
-                      {{ item }}
+                        {{ item}}
                       <span>
                       تومان
                      </span> 
@@ -164,9 +164,12 @@
                      </div>
                      <div class="text d-flex flex-column  align-items-end gap-2">
                      <span>قیمت کالا ها </span>
-              
-                     <span class="number">تعداد کالا </span>
-                     <span>{{ sum }}</span>
+                      
+                     <span class="number d-flex flex-column ">تعداد کالا 
+                     <span v-for="(num,index) in number" :key="index">
+                      {{ num}}
+                    </span>
+                    </span>
                    </div>
                    </div>
                     <div class="discount-all d-flex justify-content-between mt-2">
@@ -281,13 +284,13 @@
   </div>
    
 
-</div>
-<div>
-  <div class="footer_up  w-100 d-flex justify-content-center mt-5">
-    <div class="footer_up-contain d-flex w-100 px-5">
-      <div class="left w-50 d-flex flex-column p-5">
-        <p class="text-white">ما را در شبکه های اجتماعی دنبال کنید</p>
-        <div class="icon fs-4 d-flex gap-5">
+ </div>
+    <div>
+      <div class="footer_up  w-100 d-flex justify-content-center mt-5">
+       <div class="footer_up-contain d-flex w-100 px-5">
+         <div class="left w-50 d-flex flex-column p-5">
+          <p class="text-white">ما را در شبکه های اجتماعی دنبال کنید</p>
+            <div class="icon fs-4 d-flex gap-5">
           <i class="bi bi-instagram"></i>
           <i class="bi bi-facebook"></i>
           <i class="bi bi-pinterest"></i>
@@ -391,33 +394,29 @@ const number=ref([])
 
 function receiveData(price){
   prices.value =price
-  console.log(typeof prices.value);
-  
+  console.log(prices.value);
 };
-
-
 function receiveNumber(num) {
   number.value = num; 
-  console.log(number.value);
+  
+
 };
-const sum = computed(()=>{
-  return number.value.reduce((acc,curr)=>acc  + curr,0)
-});
+
+
+
 const totalPrice = computed(() => {
-    // اطمینان از اینکه prices.value یک آرایه است
-    if (!Array.isArray(prices.value)) {
-        console.error("prices.value is not an array:", prices.value);
-        return 0;
-    }
-    
-    // محاسبه مجموع قیمت‌ها
-    return prices.value.reduce((acc, curr) => {
-        // تبدیل مقدار فعلی به عدد
-        const price = parseFloat(curr);
-        // اگر تبدیل به عدد ناموفق بود، از 0 استفاده کنید
-        return acc + (isNaN(price) ? 0 : price);
-    }, 0);
+  if (!Array.isArray(prices.value) || !Array.isArray(number.value)) {
+    return "0.00";
+  }
+
+  let total = prices.value.reduce((sum, price, index) => {
+    return sum + price * (number.value[index] || 0);
+  }, 0);
+
+  return total.toFixed(2); 
 });
+
+
 
 
 
@@ -427,7 +426,7 @@ onMounted(()=>{
   receiveData();
  
   
-})
+});
 
 </script>
 

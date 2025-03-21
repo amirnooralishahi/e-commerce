@@ -32,14 +32,19 @@ body {
       }
     }
     .left{ 
+      .link{ 
+        text-decoration: none;
+        color: black;
+      }
       &-shop{ 
        &:hover{ 
         cursor: pointer !important;
        }
        .cart {
-        z-index: 20; /* افزایش مقدار z-index */
+        
+
+        z-index: 20; 
         position: relative;
-        border: 1px solid red;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -95,10 +100,16 @@ body {
     height: 470px !important;
 
     &-contain {
+      .delivary,.available,
+      .graphic{
+        .icon-check{
+        padding-left: 40px;
 
+
+        }
+      }
       gap: 1rem;
 
-      .icon {}
 
       .title {
         .delete {

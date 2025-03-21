@@ -1,10 +1,10 @@
 import { createRouter,createWebHistory }    from 'vue-router'
 import HelloWorld from '../components/Product.vue'
-import cardItem from '../components/BasketProduct.vue'
+import BasketProduct from '../components/BasketProduct.vue'
 
 const routes= [
     {path:'/' , component: HelloWorld},
-    {path:'/card-item',component:cardItem},
+    {path:'/BasketProduct',component:BasketProduct},
 ]
 const router= createRouter({history:createWebHistory(),
     routes,

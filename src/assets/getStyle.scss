@@ -39,7 +39,7 @@ body {
        .cart {
         z-index: 20; /* افزایش مقدار z-index */
         position: relative;
-        border: 1px solid red;
+ 
         display: flex;
         justify-content: center;
         align-items: center;
@@ -172,6 +172,11 @@ body {
                 &:hover{ 
                   cursor: pointer;
                 }
+                }
+              }
+              .right { 
+                .icon{ 
+                  cursor: pointer;
                 }
               }
             }
