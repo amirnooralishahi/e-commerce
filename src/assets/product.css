@@ -66,7 +66,6 @@ body {
 }
 
 .Card .filter {
-  border: 1px solid red !important;
   width: 300px;
   height: 470px !important;
 }
@@ -82,7 +81,8 @@ body {
 }
 .Card .filter-contain .color-type {
   height: 200px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .Card .filter-contain .color-type .colors:hover {
   cursor: pointer;

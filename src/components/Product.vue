@@ -128,7 +128,7 @@
         </div>
         <div class="design d-flex flex-column align-items-center w-100">
           <div class="up d-flex w-100 justify-content-center">
-            <div class="icon w-25 border d-flex">
+            <div class="icon w-25 d-flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -177,7 +177,7 @@
           <div class="line"></div>
         </div>
         <div class="color d-flex flex-column align-items-center w-100">
-          <div @click="clickColor" class="up d-flex w-100 justify-content-center border border-danger">
+          <div @click="clickColor" class="up d-flex w-100 justify-content-center ">
             <div class="icon w-25">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
