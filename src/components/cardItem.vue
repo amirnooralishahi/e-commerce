@@ -49,6 +49,7 @@ const props = defineProps({
   shop:Number
 
 })
+// console.log(props.item);
 
 function increase() {
   

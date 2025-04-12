@@ -66,6 +66,7 @@ body {
 }
 
 .Card .filter {
+  border: 1px solid red !important;
   width: 300px;
   height: 470px !important;
 }
@@ -75,6 +76,16 @@ body {
 .Card .filter-contain .delivary .icon-check, .Card .filter-contain .available .icon-check,
 .Card .filter-contain .graphic .icon-check {
   padding-left: 40px;
+}
+.Card .filter-contain .color:hover {
+  cursor: pointer;
+}
+.Card .filter-contain .color-type {
+  height: 200px;
+  overflow: scroll;
+}
+.Card .filter-contain .color-type .colors:hover {
+  cursor: pointer;
 }
 .Card .filter-contain .title .delete {
   color: #A72F3B !important;

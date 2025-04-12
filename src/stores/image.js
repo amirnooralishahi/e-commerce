@@ -8,11 +8,8 @@ export const useImageStore = defineStore('useImageStore', () => {
   async function getImages() {
     try { 
       const res = await axios.get(`https://demo.spreecommerce.org/api/v2/storefront/products?include=images`);
+      images.value = res.data.included || [];
       
-      // چک کردن مقدار دریافتی
-      // console.log("📦 داده‌های دریافتی از API:", res.data.included);
-      
-      images.value = res.data.included || []; // جلوگیری از مقدار null یا undefined
     } catch (error) {
       console.error("❌ خطا در دریافت تصاویر:", error);
     }

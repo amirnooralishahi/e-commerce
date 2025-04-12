@@ -88,10 +88,27 @@
       </div>
     </div>
     <div class="Card-contain d-flex flex-column justify-content-center">
-      <div class="cardItems d-flex justify-content-end row">
-        <div
-          class="cardItem border rounded-4 col-3"
-          v-for="(item, index) in usebook.allProduct" :key="index">
+      <div class="cardItems d-flex justify-content-end row"  v-if="filter">
+        <div class="cardItem border rounded-4 col-3" 
+             v-for="(item, index) in usebook.allProduct" :key="index"
+            
+             >
+          <cardItem   :item="item" :index="index" :image="useimage.images" v-model:shop="shop" />
+          
+        </div>
+      </div>
+      <div class="cardItems d-flex justify-content-end row"  v-if="filterColor">
+        <div class="cardItem border rounded-4 col-3" 
+             v-for="(item, index) in detailStore.colorProduct" :key="index"
+            >
+          <cardItem   :item="item" :index="index" :image="useimage.images" v-model:shop="shop" />
+          
+        </div>
+      </div>
+      <div class="cardItems d-flex justify-content-end row"  v-if="filterSize">
+        <div class="cardItem border rounded-4 col-3" 
+             v-for="(item, index) in detailStore.sizeProduct" :key="index"
+            >
           <cardItem   :item="item" :index="index" :image="useimage.images" v-model:shop="shop" />
           
         </div>
@@ -130,7 +147,7 @@
           <div class="line"></div>
         </div>
         <div class="distance d-flex flex-column align-items-center w-100">
-          <div class="up d-flex w-100 justify-content-center">
+          <div @click="clickSize" class="up d-flex w-100 justify-content-center">
             <div class="icon w-25">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -147,10 +164,20 @@
             </div>
             <span class="text-end w-75 text-secondary">اندازه</span>
           </div>
+          <div v-if="size" class="color-type d-flex flex-column w-100 border">
+            <div
+              v-for="(item, index) in localColor.size"
+              :key="index"
+              class="colors"
+              @click="sendItemsSize(item)"
+            >
+              {{ item['name'] }}
+            </div>
+          </div>
           <div class="line"></div>
         </div>
         <div class="color d-flex flex-column align-items-center w-100">
-          <div class="up d-flex w-100 justify-content-center">
+          <div @click="clickColor" class="up d-flex w-100 justify-content-center border border-danger">
             <div class="icon w-25">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -166,6 +193,16 @@
               </svg>
             </div>
             <span class="text-end w-75 text-secondary">رنگ</span>
+          </div>
+          <div v-if="color" class="color-type d-flex flex-column w-100 border">
+            <div
+              v-for="(item, index) in localColor.color"
+              :key="index"
+              class="colors"
+              @click="sendItems(item)"
+            >
+              {{ item['name'] }}
+            </div>
           </div>
           <div class="line"></div>
         </div>
@@ -436,13 +473,44 @@ import { onMounted,ref, watch } from 'vue';
 import cardItem from './cardItem.vue';
 import { useDetailStore } from '../stores/counter.js';
 import { useImageStore } from '@/stores/image';
+import {useColorStore} from '@/stores/localStorage'
 
 const useimage = useImageStore()
 const usebook = useDetailStore();
+const localColor= useColorStore();
+const detailStore = useDetailStore()
 
 
+const color=ref(false)
+const size = ref(false)
+const filter= ref(true)
+const filterColor=ref(false)
+const filterSize=ref(false)
+const clickColor=()=>{
+  color.value=!color.value
+}
+const clickSize =()=>{ 
+  size.value=!size.value
+}
+function sendItems(item) {
+  const slug = item['name']
+  
+  detailStore.filterByColor(slug)
+  filterColor.value=true
+
+  filter.value=false
+}
+function sendItemsSize(item){ 
+  const slug = item['name']
+  detailStore.filterBySize(slug)
+  filterSize.value=true
+  filter.value=false
+}
+console.log(localColor);
 
 onMounted(()=>{
+ localColor.getcolor()
+
  usebook.getname()
  useimage.getImages()
 })
