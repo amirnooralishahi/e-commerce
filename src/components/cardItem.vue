@@ -37,9 +37,7 @@
 </template>
 
 <script setup>
-import { useDetailStore } from "../stores/counter.js";
-// import { computed } from "vue";
-
+import { useDetailStore } from "../stores/detail.js";
 import { onMounted, ref, watch } from "vue";
 const emit = defineEmits(["update:shop"]);
 const props = defineProps({
@@ -49,7 +47,7 @@ const props = defineProps({
   shop:Number
 
 })
-// console.log(props.item);
+
 
 function increase() {
   
@@ -69,8 +67,12 @@ onMounted(() => {
   if (props.image && props.image.length > 0) {
     updateImage();
   }
-});
+  // loadData()
 
+});
+// const loadData = async ()=>{
+//   await usebook.filterByFull()
+// } 
 watch(() => props.image, (newValue) => {
   if (newValue && newValue.length > 0) {
     updateImage();
@@ -83,15 +85,7 @@ function updateImage() {
   
 }
 
-onMounted(() => {
-  loadData()
-  usebook.getname()
-  
 
-})
-const loadData = async ()=>{
-  await usebook.getname()
-} 
 const usebook = useDetailStore();
 
 
