@@ -88,13 +88,13 @@
       </div>
     </div>
     <div class="Card-contain d-flex flex-column justify-content-center">  
-      <div class="cardItems d-flex justify-content-end row" v-if="filterFull">
+      <div class="cardItems d-flex justify-content-end row">
         <div
           class="cardItem border rounded-4 col-3"
           v-for="(item, index) in detailStore.fullProduct"
           :key="index"
         >
-          <cardItem :item="item" :index="index" :image="useimage.images" v-model:shop="shop" />
+          <cardItem :item="item" :index="index" :image="detailStore.images" v-model:shop="shop" />
         </div>
     </div>
     </div>
@@ -150,7 +150,7 @@
           </div>
           <div v-if="size" class="color-type d-flex flex-column w-100 border">
             <div
-              v-for="(sizeSlug, index) in localColor.size"
+              v-for="(sizeSlug, index) in detailStore.size"
               :key="index"
               class="colors"
               @click="sendItem(null,sizeSlug)"
@@ -180,7 +180,7 @@
           </div>
           <div v-if="color" class="color-type d-flex flex-column w-100 border">
             <div
-              v-for="(colorSlug, index) in localColor.color"
+              v-for="(colorSlug, index) in detailStore.color"
               :key="index"
               class="colors"
               @click="sendItem(colorSlug,null)"
@@ -455,21 +455,16 @@
 <script setup>
 import { onMounted,ref, watch } from 'vue';
 import cardItem from '../components/cardItem.vue';
-import { useDetailStore } from '../stores/detail.js';
-import { useImageStore } from '@/stores/image';
-import {useColorStore} from '@/stores/getColorSize'
+import { useDetailStore } from '../stores/useDetailStore.js';
 import debounce from 'lodash.debounce'
 
-const useimage = useImageStore()
-const usebook = useDetailStore();
-const localColor= useColorStore();
+
 const detailStore = useDetailStore()
 
 
 const color=ref(false)
 const size = ref(false)
-const filter= ref(true)
-const filterFull=ref(true)
+
 const clickColor=()=>{
   color.value=!color.value
 }
@@ -487,9 +482,7 @@ function sendItem(colorSlug = null, sizeSlug = null) {
     detailStore.selectedSize= sizeSlug.name
   }
 
-  // detailStore.filterByFull()
-  filterFull.value = true
-  filter.value = false
+
 }
 
 
@@ -504,25 +497,25 @@ watch(
   }
 )
 onMounted(()=>{
- localColor.getcolor()
+ detailStore.getcolor()
  detailStore.filterByFull()
- useimage.getImages()
+detailStore.getImages()
 })
 const shop = ref(0)
 console.log(shop.value);
 
 function decrease(){
-    if( usebook.count>0){
-      usebook.count-=1 
+    if( detailStore.count>0){
+      detailStore.count-=1 
 
     }else{ 
-      usebook.count=0
+      detailStore.count=0
     }
 
 
    }
    function increase(){
-    usebook.count+=1    
+    detailStore.count+=1    
   }
 
 ;

@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { useDetailStore } from "../stores/detail.js";
+import { useDetailStore } from "../stores/useDetailStore.js";
 import { onMounted, ref, watch } from "vue";
 const emit = defineEmits(["update:shop"]);
 const props = defineProps({
