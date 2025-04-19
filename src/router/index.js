@@ -1,3 +1,4 @@
+
 import { createRouter,createWebHistory }    from 'vue-router'
 import Product from '../pages/Product.vue'
 import BasketProduct from '../pages/BasketProduct.vue'

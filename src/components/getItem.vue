@@ -1,3 +1,6 @@
+
+
+
 <template>
        
        <div class="line mt-2 "></div>
@@ -32,9 +35,9 @@
       </div>
       <div class="line mt-2 "></div>
     </div>
-  </template>
+</template>
   
-  <script setup>
+<script setup>
   import {  onMounted, onUnmounted, ref, watchEffect } from "vue";
 
   const emit = defineEmits(['prices','number'])
@@ -102,5 +105,6 @@
     localStorage.setItem('items',JSON.stringify(storages.value))
  
   }
-  </script>
+</script>
+
   

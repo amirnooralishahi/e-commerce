@@ -1,3 +1,5 @@
+
+
 <template>
   <div  >
   <div class="image" ref="localImage">
@@ -112,3 +114,4 @@ const usebook = useDetailStore();
 
 @import "../assets/product.css";
 </style>
+

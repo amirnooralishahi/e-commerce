@@ -1,3 +1,4 @@
+
 <template >
   <div class="header mt-3">
     <div class="header-contain p-3 d-flex w-100 justify-content-around">
@@ -459,7 +460,6 @@ import { useDetailStore } from '../stores/useDetailStore.js';
 import debounce from 'lodash.debounce'
 
 
-
 const detailStore = useDetailStore()
 
 
@@ -532,4 +532,5 @@ function decrease(){
 
 
 </style>
+
 
