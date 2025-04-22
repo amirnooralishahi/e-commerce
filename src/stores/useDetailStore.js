@@ -11,77 +11,43 @@ export const useDetailStore = defineStore('detailStore', () => {
   const color= ref('')
   const size = ref('')
   const images = ref([]);
-  async function getImages() {
-    try { 
-      const res = await axios.get(`https://demo.spreecommerce.org/api/v2/storefront/products?include=images`);
-      images.value = res.data.included || [];
-      
-    } catch (error) {
-      console.error("❌ خطا در دریافت تصاویر:", error);
+  const full=ref()
+
+ function get(){
+    let params = [
+      `page=${count.value}`,
+      `per_page=20`,
+      `include=images`
+    ];
+    
+    if (selectedSize.value) {
+      params.push(`filter[options][size]=${selectedSize.value}`);
     }
-  }
-  async function getcolor( ){ 
-      try{
-          await axios.get('https://demo.spreecommerce.org/api/v2/storefront/products').then(res=>{
-              color.value=res.data.meta.filters.option_types[0].option_values
-              
-          }
-          )
-
-      }
-      catch (error) {
-          console.error('error:', error)
-        }
-  }
-  async function getSize( ){ 
-        try{
-            await axios.get('https://demo.spreecommerce.org/api/v2/storefront/products').then(res=>{
-                size.value=res.data.meta.filters.option_types[1].option_values
-
-                            
-                
-            }
-            )
-
-        }
-        catch (error) {
-            console.error('error:', error)
-          }
-  }
-  async function filterByFull() {
-    try {
-      const params = []
-  
-      if (selectedSize.value) {
-        params.push(`filter[options][size]=${selectedSize.value}`)
-      }
-  
-      if (selectedColor.value) {
-        params.push(`filter[options][color]=${selectedColor.value}`)
-      }
-
-      let url = `https://demo.spreecommerce.org/api/v2/storefront/products?page=${count.value}&per_page=20`
-      if (params.length > 0) {
-        url += `&${params.join('&')}`
-      }
-
-      const res = await axios.get(url)
-      fullProduct.value = res.data.data
-      console.log("Fetched:", fullProduct.value)
-
-    } catch (error) {
-      console.error("Filter error:", error)
+    
+    if (selectedColor.value) {
+      params.push(`filter[options][color]=${selectedColor.value}`);
     }
-}
+    
+    let url = `https://demo.spreecommerce.org/api/v2/storefront/products?${params.join('&')}`;
+    
+    axios.get(url)
+      .then(res => {
+        fullProduct.value= res.data.data
+        size.value=res.data.meta.filters.option_types[1].option_values
+        color.value=res.data.meta.filters.option_types[0].option_values
+        images.value = res.data.included || [];
 
 
+        
+      })
+      .catch(err => {
+        console.error("Error fetching data:", err);
+      });
+  }
 
-getImages()
-getcolor()
-getSize()
-  watch(count,()=>{
-    getname()
-  })
+get()
+
+
   return {
    images, 
     color,
@@ -90,11 +56,8 @@ getSize()
     selectedSize,
     fullProduct,
     count,
-    filterByFull,
-    getcolor,
-    getSize,
- getImages,
-
+    full,
+    get,
   }
 })
 

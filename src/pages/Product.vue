@@ -463,6 +463,7 @@ import debounce from 'lodash.debounce'
 const detailStore = useDetailStore()
 
 
+
 const color=ref(false)
 const size = ref(false)
 
@@ -488,8 +489,11 @@ function sendItem(colorSlug = null, sizeSlug = null) {
 
 
 const debouncedFilter = debounce(() => {
-  detailStore.filterByFull()
+  detailStore.get()
 }, 300);  
+watch(() => detailStore.full, (newData) => {
+  console.log("Fetched data:", newData);
+});
 
 watch(
   [() => detailStore.selectedColor, () => detailStore.selectedSize, () => detailStore.count],
@@ -498,9 +502,8 @@ watch(
   }
 )
 onMounted(()=>{
- detailStore.getcolor()
- detailStore.filterByFull()
-detailStore.getImages()
+  detailStore.get()
+
 })
 const shop = ref(0)
 console.log(shop.value);

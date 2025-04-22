@@ -69,12 +69,9 @@ onMounted(() => {
   if (props.image && props.image.length > 0) {
     updateImage();
   }
-  // loadData()
 
 });
-// const loadData = async ()=>{
-//   await usebook.filterByFull()
-// } 
+
 watch(() => props.image, (newValue) => {
   if (newValue && newValue.length > 0) {
     updateImage();
