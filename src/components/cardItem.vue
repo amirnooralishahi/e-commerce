@@ -45,7 +45,7 @@ const emit = defineEmits(["update:shop"]);
 const props = defineProps({
   index:Number,
   item:Object,
-  image:Object,
+  image:Array,
   shop:Number
 
 })
@@ -66,14 +66,15 @@ function increase() {
 
 const imageUrl = ref("");
 onMounted(() => {
-  if (props.image && props.image.length > 0) {
-    updateImage();
-  }
+
 
 });
 
 watch(() => props.image, (newValue) => {
   if (newValue && newValue.length > 0) {
+    updateImage();
+  }
+  if (props.image && props.image.length > 0) {
     updateImage();
   }
 }, { deep: true });

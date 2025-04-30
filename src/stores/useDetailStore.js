@@ -28,8 +28,7 @@ export const useDetailStore = defineStore('detailStore', () => {
       params.push(`filter[options][color]=${selectedColor.value}`);
     }
     
-    let url = `https://demo.spreecommerce.org/api/v2/storefront/products?${params.join('&')}`;
-    
+    let url = `/api/v2/storefront/products?${params.join('&')}`;    
     axios.get(url)
       .then(res => {
         fullProduct.value= res.data.data
