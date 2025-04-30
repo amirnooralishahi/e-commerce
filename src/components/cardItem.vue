@@ -65,11 +65,6 @@ function increase() {
 }
 
 const imageUrl = ref("");
-onMounted(() => {
-
-
-});
-
 watch(() => props.image, (newValue) => {
   if (newValue && newValue.length > 0) {
     updateImage();
